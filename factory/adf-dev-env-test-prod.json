@@ -1,0 +1,15 @@
+{
+	"name": "adf-dev-env-test-prod",
+	"properties": {
+		"trustModeClaimForMi": {
+			"value": "Disabled",
+			"editable": true
+		}
+	},
+	"location": "centralindia",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "b0fb73dc-93cf-4c72-ade2-af87d9ff7936",
+		"tenantId": "521e944d-8344-4032-bcc6-2543d7d13272"
+	}
+}

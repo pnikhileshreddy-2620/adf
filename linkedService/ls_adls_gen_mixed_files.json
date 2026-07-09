@@ -1,0 +1,12 @@
+{
+	"name": "ls_adls_gen_mixed_files",
+	"type": "Microsoft.DataFactory/factories/linkedservices",
+	"properties": {
+		"annotations": [],
+		"type": "AzureBlobFS",
+		"typeProperties": {
+			"url": "https://adlsmutilplefiles.dfs.core.windows.net/",
+			"encryptedCredential": "ew0KICAiVmVyc2lvbiI6ICIyMDE3LTExLTMwIiwNCiAgIlByb3RlY3Rpb25Nb2RlIjogIktleSIsDQogICJTZWNyZXRDb250ZW50VHlwZSI6ICJQbGFpbnRleHQiLA0KICAiQ3JlZGVudGlhbElkIjogIkRBVEFGQUNUT1JZQDY1RDNEMjk0LUI1RDQtNDgzMi1CQjQzLUI4NTI3RDcxNTgxOV84NjFmNmRmMi1hODc0LTQ4OTQtYTA5OC0yOTY1MjI1ZTk2YmEiDQp9"
+		}
+	}
+}

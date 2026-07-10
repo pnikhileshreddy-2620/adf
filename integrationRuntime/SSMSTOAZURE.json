@@ -1,0 +1,6 @@
+{
+	"name": "SSMSTOAZURE",
+	"properties": {
+		"type": "SelfHosted"
+	}
+}

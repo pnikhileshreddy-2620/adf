@@ -1,0 +1,27 @@
+{
+	"name": "DS_ADLS_GEN2_Delete_old_files",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LS_DELETE_OLD_FILES",
+			"type": "LinkedServiceReference"
+		},
+		"parameters": {
+			"p_fileName": {
+				"type": "string"
+			}
+		},
+		"annotations": [],
+		"type": "Binary",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileName": {
+					"value": "@dataset().p_fileName",
+					"type": "Expression"
+				},
+				"folderPath": "input",
+				"fileSystem": "source"
+			}
+		}
+	}
+}

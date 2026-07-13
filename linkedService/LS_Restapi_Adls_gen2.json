@@ -1,0 +1,12 @@
+{
+	"name": "LS_Restapi_Adls_gen2",
+	"properties": {
+		"annotations": [],
+		"type": "HttpServer",
+		"typeProperties": {
+			"url": "https://reqres.in/api/users?page=2",
+			"enableServerCertificateValidation": false,
+			"authenticationType": "Anonymous"
+		}
+	}
+}

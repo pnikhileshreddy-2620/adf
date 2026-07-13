@@ -1,0 +1,19 @@
+{
+	"name": "ds_rest_parquet",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LS_rest_parquet",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Parquet",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileSystem": "restapi"
+			},
+			"compressionCodec": "snappy"
+		},
+		"schema": []
+	}
+}

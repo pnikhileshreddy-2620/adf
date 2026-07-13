@@ -1,0 +1,223 @@
+{
+	"name": "PL_restapi_to_parquet",
+	"properties": {
+		"activities": [
+			{
+				"name": "CPY_RESTAPI_TO_PARQUET",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "RestSource",
+						"httpRequestTimeout": "00:01:40",
+						"requestInterval": "00.00:00:00.010",
+						"requestMethod": "GET",
+						"additionalHeaders": {
+							"x-api-key": "reqres_208e6e37dc7b4388aded75ec2bd4e643"
+						},
+						"paginationRules": {
+							"supportRFC5988": "true"
+						}
+					},
+					"sink": {
+						"type": "ParquetSink",
+						"storeSettings": {
+							"type": "AzureBlobFSWriteSettings"
+						},
+						"formatSettings": {
+							"type": "ParquetWriteSettings"
+						}
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"path": "$['page']"
+								},
+								"sink": {
+									"name": "page"
+								}
+							},
+							{
+								"source": {
+									"path": "$['per_page']"
+								},
+								"sink": {
+									"name": "per_page"
+								}
+							},
+							{
+								"source": {
+									"path": "$['total']"
+								},
+								"sink": {
+									"name": "total"
+								}
+							},
+							{
+								"source": {
+									"path": "$['total_pages']"
+								},
+								"sink": {
+									"name": "total_pages"
+								}
+							},
+							{
+								"source": {
+									"path": "['id']"
+								},
+								"sink": {
+									"name": "id"
+								}
+							},
+							{
+								"source": {
+									"path": "['email']"
+								},
+								"sink": {
+									"name": "email"
+								}
+							},
+							{
+								"source": {
+									"path": "['first_name']"
+								},
+								"sink": {
+									"name": "first_name"
+								}
+							},
+							{
+								"source": {
+									"path": "['last_name']"
+								},
+								"sink": {
+									"name": "last_name"
+								}
+							},
+							{
+								"source": {
+									"path": "['avatar']"
+								},
+								"sink": {
+									"name": "avatar"
+								}
+							},
+							{
+								"source": {
+									"path": "$['support']['url']"
+								},
+								"sink": {
+									"name": "support_url"
+								}
+							},
+							{
+								"source": {
+									"path": "$['support']['text']"
+								},
+								"sink": {
+									"name": "text"
+								}
+							},
+							{
+								"source": {
+									"path": "$['_meta']['powered_by']"
+								},
+								"sink": {
+									"name": "powered_by"
+								}
+							},
+							{
+								"source": {
+									"path": "$['_meta']['docs_url']"
+								},
+								"sink": {
+									"name": "docs_url"
+								}
+							},
+							{
+								"source": {
+									"path": "$['_meta']['upgrade_url']"
+								},
+								"sink": {
+									"name": "upgrade_url"
+								}
+							},
+							{
+								"source": {
+									"path": "$['_meta']['example_url']"
+								},
+								"sink": {
+									"name": "example_url"
+								}
+							},
+							{
+								"source": {
+									"path": "$['_meta']['variant']"
+								},
+								"sink": {
+									"name": "variant"
+								}
+							},
+							{
+								"source": {
+									"path": "$['_meta']['message']"
+								},
+								"sink": {
+									"name": "message"
+								}
+							},
+							{
+								"source": {
+									"path": "$['_meta']['cta']['label']"
+								},
+								"sink": {
+									"name": "label"
+								}
+							},
+							{
+								"source": {
+									"path": "$['_meta']['cta']['url']"
+								},
+								"sink": {
+									"name": "_meta_cta_url"
+								}
+							},
+							{
+								"source": {
+									"path": "$['_meta']['context']"
+								},
+								"sink": {
+									"name": "context"
+								}
+							}
+						],
+						"collectionReference": "$['data']"
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "ds_RestApi",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "ds_rest_parquet",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
+		"annotations": []
+	}
+}

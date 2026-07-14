@@ -1,0 +1,63 @@
+{
+	"name": "PL_usp_InsertCustomer",
+	"properties": {
+		"description": "Using ADF creating new records in ON PREMISE DB",
+		"activities": [
+			{
+				"name": "usp_InsertCustomer",
+				"type": "SqlServerStoredProcedure",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"storedProcedureName": "[dbo].[usp_InsertCustomer]",
+					"storedProcedureParameters": {
+						"id": {
+							"value": {
+								"value": "@pipeline().parameters.p_id",
+								"type": "Expression"
+							},
+							"type": "Int32"
+						},
+						"name": {
+							"value": {
+								"value": "@pipeline().parameters.p_name",
+								"type": "Expression"
+							},
+							"type": "String"
+						},
+						"phone": {
+							"value": {
+								"value": "@pipeline().parameters.p_phone",
+								"type": "Expression"
+							},
+							"type": "String"
+						}
+					}
+				},
+				"linkedServiceName": {
+					"referenceName": "DS_INSERT_NEW_RECORD_TABLE_SQL_ON_PRIM",
+					"type": "LinkedServiceReference"
+				}
+			}
+		],
+		"parameters": {
+			"p_id": {
+				"type": "int"
+			},
+			"p_name": {
+				"type": "string"
+			},
+			"p_phone": {
+				"type": "string"
+			}
+		},
+		"annotations": []
+	}
+}

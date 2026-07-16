@@ -1,0 +1,21 @@
+{
+	"name": "DS_SQL_DynamicTable",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LS_SQL_BLOB_CSVFILES",
+			"type": "LinkedServiceReference"
+		},
+		"parameters": {
+			"TableName": {
+				"type": "string"
+			}
+		},
+		"annotations": [],
+		"type": "SqlServerTable",
+		"schema": [],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "TableList"
+		}
+	}
+}

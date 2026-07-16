@@ -1,0 +1,112 @@
+{
+	"name": "PL_CopyCustomer_WithAudit",
+	"properties": {
+		"activities": [
+			{
+				"name": "Copy_Customer",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "SqlServerSource",
+						"queryTimeout": "02:00:00",
+						"partitionOption": "None"
+					},
+					"sink": {
+						"type": "DelimitedTextSink",
+						"storeSettings": {
+							"type": "AzureBlobStorageWriteSettings"
+						},
+						"formatSettings": {
+							"type": "DelimitedTextWriteSettings",
+							"quoteAllText": true,
+							"fileExtension": ".txt"
+						}
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"typeConversion": true,
+						"typeConversionSettings": {
+							"allowDataTruncation": true,
+							"treatBooleanAsNumber": false
+						}
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "DS_SQL_BLOBFILES",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "DS_SQL_BLOB_CSV_FORMAT",
+						"type": "DatasetReference"
+					}
+				]
+			},
+			{
+				"name": "SP_LogSuccess",
+				"type": "SqlServerStoredProcedure",
+				"dependsOn": [
+					{
+						"activity": "Copy_Customer",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"storedProcedureName": "[audit].[LoadStatus]",
+					"storedProcedureParameters": {
+						"DataRead": {
+							"value": {
+								"value": "@activity('Copy_Customer').output.rowsCopied",
+								"type": "Expression"
+							},
+							"type": "Int32"
+						},
+						"ErrorID": {
+							"value": "",
+							"type": "String"
+						},
+						"ErrorMessage": {
+							"value": "",
+							"type": "String"
+						},
+						"LoadStatus": {
+							"value": "Success",
+							"type": "String"
+						},
+						"TableName": {
+							"value": "Customer",
+							"type": "String"
+						}
+					}
+				},
+				"linkedServiceName": {
+					"referenceName": "LS_SQL_BLOB_CSVFILES",
+					"type": "LinkedServiceReference"
+				}
+			}
+		],
+		"annotations": []
+	}
+}

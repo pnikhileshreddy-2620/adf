@@ -1,0 +1,22 @@
+{
+	"name": "DS_ADLS_GEN_Validation",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LS_ADLS_GEN_Validation",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileSystem": "emptyfolder"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": []
+	}
+}

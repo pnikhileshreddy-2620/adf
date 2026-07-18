@@ -1,0 +1,24 @@
+{
+	"name": "TRG_Daily_8PM_FullLoad",
+	"properties": {
+		"annotations": [],
+		"runtimeState": "Started",
+		"pipelines": [
+			{
+				"pipelineReference": {
+					"referenceName": "PL_Copy_Customer_Backup",
+					"type": "PipelineReference"
+				}
+			}
+		],
+		"type": "ScheduleTrigger",
+		"typeProperties": {
+			"recurrence": {
+				"frequency": "Day",
+				"interval": 1,
+				"startTime": "2026-07-17T08:00:00",
+				"timeZone": "India Standard Time"
+			}
+		}
+	}
+}

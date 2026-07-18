@@ -1,0 +1,117 @@
+{
+	"$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"value": "adf-dev-env-test-prod"
+		},
+		"DS_INSERT_NEW_RECORD_TABLE_SQL_ON_PRIM_password": {
+			"value": ""
+		},
+		"LS_ADLS_DataLake_accountKey": {
+			"value": ""
+		},
+		"LS_ADLS_GEN2_SourceFolder_accountKey": {
+			"value": ""
+		},
+		"LS_ADLS_GEN_Validation_accountKey": {
+			"value": ""
+		},
+		"LS_ADLS_Gen2_accountKey": {
+			"value": ""
+		},
+		"LS_DELETE_OLD_FILES_accountKey": {
+			"value": ""
+		},
+		"LS_Mutilple_csv_files_day13b10_accountKey": {
+			"value": ""
+		},
+		"LS_SQLServer_OnPrem_password": {
+			"value": ""
+		},
+		"LS_SQL_BLOB_CSVFILES_password": {
+			"value": ""
+		},
+		"LS_SQL_BLOB_CSV_FORMAT_connectionString": {
+			"value": ""
+		},
+		"LS_SQL_BLOB_STORAGE_connectionString": {
+			"value": ""
+		},
+		"LS_rest_parquet_accountKey": {
+			"value": ""
+		},
+		"DS_INSERT_NEW_RECORD_TABLE_SQL_ON_PRIM_properties_typeProperties_server": {
+			"value": "localhost\\SQLEXPRESS"
+		},
+		"DS_INSERT_NEW_RECORD_TABLE_SQL_ON_PRIM_properties_typeProperties_database": {
+			"value": "customer"
+		},
+		"DS_INSERT_NEW_RECORD_TABLE_SQL_ON_PRIM_properties_typeProperties_userName": {
+			"value": "Nikhilesh2620"
+		},
+		"LS_ADLS_DataLake_properties_typeProperties_url": {
+			"value": "https://adlsmutilplefiles.dfs.core.windows.net/"
+		},
+		"LS_ADLS_GEN2_SourceFolder_properties_typeProperties_url": {
+			"value": "https://adlsmutilplefiles.dfs.core.windows.net/"
+		},
+		"LS_ADLS_GEN_Validation_properties_typeProperties_url": {
+			"value": "https://adlsmutilplefiles.dfs.core.windows.net/"
+		},
+		"LS_ADLS_Gen2_properties_typeProperties_url": {
+			"value": "https://adlsmutilplefiles.dfs.core.windows.net/"
+		},
+		"LS_DELETE_OLD_FILES_properties_typeProperties_url": {
+			"value": "https://adlsmutilplefiles.dfs.core.windows.net/"
+		},
+		"LS_Mutilple_csv_files_day13b10_properties_typeProperties_url": {
+			"value": "https://adlsmutilplefiles.dfs.core.windows.net/"
+		},
+		"LS_SQLServer_OnPrem_properties_typeProperties_server": {
+			"value": "localhost\\SQLEXPRESS"
+		},
+		"LS_SQLServer_OnPrem_properties_typeProperties_database": {
+			"value": "Retalis_DB"
+		},
+		"LS_SQLServer_OnPrem_properties_typeProperties_userName": {
+			"value": "Nikhilesh2620"
+		},
+		"LS_SQL_BLOB_CSVFILES_properties_typeProperties_server": {
+			"value": "localhost\\SQLEXPRESS"
+		},
+		"LS_SQL_BLOB_CSVFILES_properties_typeProperties_database": {
+			"value": "ADF_Demo_DB"
+		},
+		"LS_SQL_BLOB_CSVFILES_properties_typeProperties_userName": {
+			"value": "Nikhilesh2620"
+		},
+		"LS_SQL_FULL_LOAD_ADLS_GEN_properties_typeProperties_server": {
+			"value": "localhost\\SQLEXPRESS"
+		},
+		"LS_SQL_FULL_LOAD_ADLS_GEN_properties_typeProperties_database": {
+			"value": "Retalis_DB"
+		},
+		"LS_SQL_FULL_LOAD_ADLS_GEN_properties_typeProperties_userName": {
+			"value": "Nikhilesh2620"
+		},
+		"LS_SQL_RetailDB_properties_typeProperties_server": {
+			"value": "localhost\\SQLEXPRESS"
+		},
+		"LS_SQL_RetailDB_properties_typeProperties_database": {
+			"value": "Retalis_DB"
+		},
+		"LS_SQL_RetailDB_properties_typeProperties_userName": {
+			"value": "Nikhilesh2620"
+		},
+		"LS_rest_parquet_properties_typeProperties_url": {
+			"value": "https://adlsmutilplefiles.dfs.core.windows.net/"
+		},
+		"Ls_RestApi_properties_typeProperties_url": {
+			"value": "https://reqres.in/api/users"
+		},
+		"sqlpassword_properties_typeProperties_baseUrl": {
+			"value": "https://retail-kv-demo123.vault.azure.net/"
+		}
+	}
+}

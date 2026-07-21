@@ -153,7 +153,7 @@
 		},
 		"TR_Blob_File_Landed_properties_PL_EventTrigger_CopyToADLS_parameters_triggerFolderPath": {
 			"type": "string",
-			"defaultValue": "@triggerBody().folderPath"
+			"defaultValue": "@replace(triggerBody().folderPath, 'triggerfiles/', '')"
 		},
 		"TR_Blob_File_Landed_properties_PL_EventTrigger_CopyToADLS_parameters_triggerFileName": {
 			"type": "string",

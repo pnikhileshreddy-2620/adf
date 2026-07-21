@@ -114,7 +114,7 @@
 			"value": "https://retail-kv-demo123.vault.azure.net/"
 		},
 		"TR_Blob_File_Landed_properties_PL_EventTrigger_CopyToADLS_parameters_triggerFolderPath": {
-			"value": "@triggerBody().folderPath"
+			"value": "@replace(triggerBody().folderPath, 'triggerfiles/', '')"
 		},
 		"TR_Blob_File_Landed_properties_PL_EventTrigger_CopyToADLS_parameters_triggerFileName": {
 			"value": "@triggerBody().fileName"

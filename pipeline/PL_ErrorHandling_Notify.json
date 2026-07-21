@@ -1,0 +1,94 @@
+{
+	"name": "PL_ErrorHandling_Notify",
+	"properties": {
+		"activities": [
+			{
+				"name": "Copy data1",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "BinarySource",
+						"storeSettings": {
+							"type": "AzureBlobStorageReadSettings",
+							"recursive": true
+						},
+						"formatSettings": {
+							"type": "BinaryReadSettings"
+						}
+					},
+					"sink": {
+						"type": "BinarySink",
+						"storeSettings": {
+							"type": "AzureBlobFSWriteSettings"
+						}
+					},
+					"enableStaging": false
+				},
+				"inputs": [
+					{
+						"referenceName": "DS_Blob_Source",
+						"type": "DatasetReference",
+						"parameters": {
+							"FolderPath": "doesnotexist",
+							"FileName": "fake.txt"
+						}
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "DS_ADLS_Sink",
+						"type": "DatasetReference",
+						"parameters": {
+							"FolderPath": "test",
+							"FileName": "notify_test_output.txt"
+						}
+					}
+				]
+			},
+			{
+				"name": "Notify_Failure",
+				"type": "WebActivity",
+				"dependsOn": [
+					{
+						"activity": "Copy data1",
+						"dependencyConditions": [
+							"Failed"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"method": "POST",
+					"headers": {
+						"Content-Type": {
+							"value": "application/json",
+							"type": "Expression"
+						}
+					},
+					"url": "https://webhook.site/93554563-d2fa-43c6-a543-0e0c31c1f30f",
+					"body": {
+						"value": "{\n     \"pipelineName\": \"@{pipeline().Pipeline}\",\n     \"status\": \"Failed\",\n     \"errorMessage\": \"@{activity('Copy data1').Error.message}\",\n     \"runId\": \"@{pipeline().RunId}\"\n   }",
+						"type": "Expression"
+					}
+				}
+			}
+		],
+		"annotations": []
+	}
+}

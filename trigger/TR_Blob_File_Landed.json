@@ -1,0 +1,28 @@
+{
+	"name": "TR_Blob_File_Landed",
+	"properties": {
+		"annotations": [],
+		"runtimeState": "Started",
+		"pipelines": [
+			{
+				"pipelineReference": {
+					"referenceName": "PL_EventTrigger_CopyToADLS",
+					"type": "PipelineReference"
+				},
+				"parameters": {
+					"triggerFolderPath": "@triggerBody().folderPath",
+					"triggerFileName": "@triggerBody().fileName"
+				}
+			}
+		],
+		"type": "BlobEventsTrigger",
+		"typeProperties": {
+			"blobPathBeginsWith": "/triggerfiles/blobs/test/",
+			"ignoreEmptyBlobs": true,
+			"scope": "/subscriptions/476dc7f3-639f-42be-a8a3-8aaeb16cfa27/resourceGroups/rg_dev_env/providers/Microsoft.Storage/storageAccounts/blobstorageallfiles",
+			"events": [
+				"Microsoft.Storage.BlobCreated"
+			]
+		}
+	}
+}

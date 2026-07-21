@@ -112,6 +112,15 @@
 		},
 		"sqlpassword_properties_typeProperties_baseUrl": {
 			"value": "https://retail-kv-demo123.vault.azure.net/"
+		},
+		"TR_Blob_File_Landed_properties_PL_EventTrigger_CopyToADLS_parameters_triggerFolderPath": {
+			"value": "@triggerBody().folderPath"
+		},
+		"TR_Blob_File_Landed_properties_PL_EventTrigger_CopyToADLS_parameters_triggerFileName": {
+			"value": "@triggerBody().fileName"
+		},
+		"TR_Blob_File_Landed_properties_typeProperties_scope": {
+			"value": "/subscriptions/476dc7f3-639f-42be-a8a3-8aaeb16cfa27/resourceGroups/rg_dev_env/providers/Microsoft.Storage/storageAccounts/blobstorageallfiles"
 		}
 	}
 }

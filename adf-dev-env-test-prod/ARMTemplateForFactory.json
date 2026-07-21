@@ -150,6 +150,18 @@
 		"sqlpassword_properties_typeProperties_baseUrl": {
 			"type": "string",
 			"defaultValue": "https://retail-kv-demo123.vault.azure.net/"
+		},
+		"TR_Blob_File_Landed_properties_PL_EventTrigger_CopyToADLS_parameters_triggerFolderPath": {
+			"type": "string",
+			"defaultValue": "@triggerBody().folderPath"
+		},
+		"TR_Blob_File_Landed_properties_PL_EventTrigger_CopyToADLS_parameters_triggerFileName": {
+			"type": "string",
+			"defaultValue": "@triggerBody().fileName"
+		},
+		"TR_Blob_File_Landed_properties_typeProperties_scope": {
+			"type": "string",
+			"defaultValue": "/subscriptions/476dc7f3-639f-42be-a8a3-8aaeb16cfa27/resourceGroups/rg_dev_env/providers/Microsoft.Storage/storageAccounts/blobstorageallfiles"
 		}
 	},
 	"variables": {
@@ -2685,6 +2697,39 @@
 			},
 			"dependsOn": [
 				"[concat(variables('factoryId'), '/linkedServices/LS_ADLS_Gen2')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/TR_Blob_File_Landed')]",
+			"type": "Microsoft.DataFactory/factories/triggers",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"runtimeState": "Started",
+				"pipelines": [
+					{
+						"pipelineReference": {
+							"referenceName": "PL_EventTrigger_CopyToADLS",
+							"type": "PipelineReference"
+						},
+						"parameters": {
+							"triggerFolderPath": "[parameters('TR_Blob_File_Landed_properties_PL_EventTrigger_CopyToADLS_parameters_triggerFolderPath')]",
+							"triggerFileName": "[parameters('TR_Blob_File_Landed_properties_PL_EventTrigger_CopyToADLS_parameters_triggerFileName')]"
+						}
+					}
+				],
+				"type": "BlobEventsTrigger",
+				"typeProperties": {
+					"blobPathBeginsWith": "/triggerfiles/blobs/test/",
+					"ignoreEmptyBlobs": true,
+					"scope": "[parameters('TR_Blob_File_Landed_properties_typeProperties_scope')]",
+					"events": [
+						"Microsoft.Storage.BlobCreated"
+					]
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/pipelines/PL_EventTrigger_CopyToADLS')]"
 			]
 		}
 	]
